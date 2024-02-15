@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /oktaoauth
+Spring:  
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            client-id: 0oaf5ulvje8TDXUbi5d7
+            client-secret: hasZ46rXya4EOh2ey0K5FH-_rOAsyYp1aNiA53N-LVyQ2q7pW_cC4Mw_RVis1trL
+            redirect-uri: http://localhost:8080/oktaoauth/login/oauth2/code/okta
+            authorization-grant-type: authorization_code
+            scope: openid, email
+            #scope: openid,email,first_name,last_name
+        provider:
+          okta:
+            authorization-uri: https://${app.subdomain}/oauth2/v1/authorize
+            token-uri: https://${app.subdomain}/oauth2/v1/token
+            jwk-set-uri: https://${app.subdomain}/oauth2/v1/keys
+            user-name-attribute: email 
+            user-info-uri: https://${app.subdomain}/oauth2/v1/userinfo 
+
+app:
+  #subdomain: dev-oilzvtcaiqtdxbvj.us.auth0.com
+  subdomain: dev-25503978.okta.com
+
+#okta:
+#  oauth2:
+#    issuer: https://dev-oilzvtcaiqtdxbvj.us.auth0.com/oauth2/default
+#     client-id: CTsUxDePiWCYBpbXLphBOi9Tl5sVVrpF
+#    client-secret: ClYQqQ3WMyORCyu8SxS7ced3irdAyL6lf0kCIzFqu4-cG5xw5WbaJgOywUKo5UCo
